@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: taintwebapp
+spec:
+  selector:
+    matchLabels:
+      app: taintwebapp
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: taintwebapp
+    spec:
+      containers:
+      - name: taintwebapp
+        image: 10.10.200.105/iast_test/iast-taintwebapp:v1.0
+        ports:
+        - containerPort: 8080
+        - containerPort: 8081
+        env: 
+        - name: IAST_URL
+          value: "http://192.168.220.54:81"
+        - name: TAG_NAME
+          value: test_of_my

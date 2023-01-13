@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: taintwebapp
+  labels:
+    app: taintwebapp
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    nodePort: 30070
+  selector:
+    app: taintwebapp

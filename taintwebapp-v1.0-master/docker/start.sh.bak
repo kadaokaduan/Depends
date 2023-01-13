@@ -1,0 +1,29 @@
+#!/bin/sh
+
+service mysql start;
+
+mysql -e "create database iast" && mysql -D iast -e "source /usr/local/sql/iast.sql";
+mysql -D mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED VIA mysql_native_password USING '*AC241830FFDDC8943AB31CBD47D758E79F7953EA';flush privileges;"
+
+chmod 755 /usr/local/ldap.sh;
+
+`nohup /container/tool/run > ldap.log 2>&1 &`;
+
+sleep 5;
+
+ldapadd -x -D 'cn=admin,dc=example,dc=org' -f /maxcrc.ldif -w admin;
+
+if [ "$IAST_URL"x != ""x ] ;
+then
+ mkdir /usr/local/iast;
+ if [ ! -f "/usr/local/iast/iast_agent.jar" ]; then
+    curl $IAST_URL/api/agent/api/iast/download?version=MCswKzA= -o /usr/local/iast/iast_agent.jar;
+ fi
+
+ export JAVA_OPTS="-javaagent:/usr/local/iast/iast_agent.jar -Diast.background.download.timeout=30000 $JAVA_OPTS";
+fi
+
+/usr/local/apache-tomcat-8.5.38/bin/catalina.sh run;
+
+
+

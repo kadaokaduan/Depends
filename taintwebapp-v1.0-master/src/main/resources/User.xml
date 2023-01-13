@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="test">
+    <!-- 通过id查询用户 -->
+    <select id="findUserById" parameterType="int" resultType="at.dallermassl.ap.security.taint.webapp.sql.User">
+        select * from student where id = #{id}
+    </select>
+    <select id="findUserByName" parameterType="String" resultType="at.dallermassl.ap.security.taint.webapp.sql.User">
+        select * from student where name = #{name}
+    </select>
+    <select id="findUserByTaintName" parameterType="String" resultType="at.dallermassl.ap.security.taint.webapp.sql.User">
+        select * from student where name = '${_parameter}'
+    </select>
+</mapper>
