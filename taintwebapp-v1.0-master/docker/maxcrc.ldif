@@ -1,0 +1,12 @@
+dn: ou=People,dc=example,dc=org
+objectclass: top
+objectclass: organizationalUnit
+ou: People
+description: Container for user entries
+
+dn: cn=hua,ou=People,dc=example,dc=org
+objectclass: inetOrgPerson
+cn:hau
+sn:huamei
+userPassword:hauhua
+telephoneNumber:244245963255

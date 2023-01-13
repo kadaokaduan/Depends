@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>testwebapp</display-name>
+  <session-config>
+    <session-timeout>45</session-timeout>
+  </session-config>
+
+<security-constraint>
+<web-resource-collection>
+<url-pattern>/vulns/*</url-pattern>
+<http-method>POST</http-method>
+<http-method>PUT</http-method>
+<http-method>DELETE</http-method>
+<http-method>GET</http-method>
+</web-resource-collection>
+    <!-- <auth-constraint>  
+        <role-name>admin</role-name>  
+    </auth-constraint> -->
+</security-constraint>
+
+<security-constraint>
+<web-resource-collection>
+<url-pattern>/vulns/*</url-pattern>
+</web-resource-collection>
+    <!-- <auth-constraint>
+        <role-name>admin</role-name>
+    </auth-constraint> -->
+</security-constraint>
+
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>FastJsonServlet</display-name>
+    <servlet-name>FastJsonServlet</servlet-name>
+    <servlet-class>at.dallermassl.ap.security.taint.webapp.json.FastJsonServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FastJsonServlet</servlet-name>
+    <url-pattern>/FastJsonServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>XXEServlet</display-name>
+    <servlet-name>XXEServlet</servlet-name>
+    <servlet-class>at.dallermassl.ap.security.taint.webapp.xxe.XXEServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>XXEServlet</servlet-name>
+    <url-pattern>/XXEServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MybatisServlet</display-name>
+    <servlet-name>MybatisServlet</servlet-name>
+    <servlet-class>at.dallermassl.ap.security.taint.webapp.sql.MybatisServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MybatisServlet</servlet-name>
+    <url-pattern>/MybatisServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>XpathServlet</display-name>
+    <servlet-name>XpathServlet</servlet-name>
+    <servlet-class>at.dallermassl.ap.security.taint.webapp.xpath.XpathServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>XpathServlet</servlet-name>
+    <url-pattern>/XpathServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SSRFServlet</display-name>
+    <servlet-name>SSRFServlet</servlet-name>
+    <servlet-class>at.dallermassl.ap.security.taint.webapp.ssrf.SSRFServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SSRFServlet</servlet-name>
+    <url-pattern>/SSRFServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LdapServlet</display-name>
+    <servlet-name>LdapServlet</servlet-name>
+    <servlet-class>at.dallermassl.ap.security.taint.webapp.ldap.LdapServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LdapServlet</servlet-name>
+    <url-pattern>/LdapServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>HqlServlet</display-name>
+    <servlet-name>HqlServlet</servlet-name>
+    <servlet-class>at.dallermassl.ap.security.taint.webapp.hql.HqlServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HqlServlet</servlet-name>
+    <url-pattern>/HqlServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Dom4jXML</display-name>
+    <servlet-name>Dom4jXML</servlet-name>
+    <servlet-class>at.dallermassl.ap.security.taint.webapp.xxe.Dom4jXML</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Dom4jXML</servlet-name>
+    <url-pattern>/Dom4jXML</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>JDom2XML</display-name>
+    <servlet-name>JDom2XML</servlet-name>
+    <servlet-class>at.dallermassl.ap.security.taint.webapp.xxe.JDom2XML</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>JDom2XML</servlet-name>
+    <url-pattern>/JDom2XML</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SAXXML</display-name>
+    <servlet-name>SAXXML</servlet-name>
+    <servlet-class>at.dallermassl.ap.security.taint.webapp.xxe.SAXXML</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SAXXML</servlet-name>
+    <url-pattern>/SAXXML</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>JAXBXML</display-name>
+    <servlet-name>JAXBXML</servlet-name>
+    <servlet-class>at.dallermassl.ap.security.taint.webapp.xxe.JAXBXml</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>JAXBXML</servlet-name>
+    <url-pattern>/JAXBXML</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GsonServlet</display-name>
+    <servlet-name>GsonServlet</servlet-name>
+    <servlet-class>at.dallermassl.ap.security.taint.webapp.json.GsonServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GsonServlet</servlet-name>
+    <url-pattern>/GsonServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>JacksonServlet</display-name>
+    <servlet-name>JacksonServlet</servlet-name>
+    <servlet-class>at.dallermassl.ap.security.taint.webapp.json.JacksonServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>JacksonServlet</servlet-name>
+    <url-pattern>/JacksonServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeserializationServlet</display-name>
+    <servlet-name>DeserializationServlet</servlet-name>
+    <servlet-class>at.dallermassl.ap.security.taint.webapp.deserialization.DeserializationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeserializationServlet</servlet-name>
+    <url-pattern>/DeserializationServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EncryptServlet</display-name>
+    <servlet-name>EncryptServlet</servlet-name>
+    <servlet-class>at.dallermassl.ap.security.taint.webapp.EncryptServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EncryptServlet</servlet-name>
+    <url-pattern>/EncryptServlet</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <display-name>MyFilter</display-name>
+    <filter-name>MyFilter</filter-name>
+    <filter-class>at.dallermassl.ap.security.taint.webapp.MyFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>MyFilter</filter-name>
+    <url-pattern>/EncryptServlet</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>MyFilter</filter-name>
+    <url-pattern>/vulns/sanitize/*</url-pattern>
+  </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Encryptdata</display-name>
+    <servlet-name>Encryptdata</servlet-name>
+    <servlet-class>at.dallermassl.ap.security.taint.webapp.Encryptdata</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Encryptdata</servlet-name>
+    <url-pattern>/Encryptdata</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PayServlet</display-name>
+    <servlet-name>PayServlet</servlet-name>
+    <servlet-class>at.dallermassl.ap.security.taint.webapp.custom.PayDemo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PayServlet</servlet-name>
+    <url-pattern>/PayServlet</url-pattern>
+  </servlet-mapping>
+</web-app>
