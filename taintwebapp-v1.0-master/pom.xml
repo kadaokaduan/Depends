@@ -21,7 +21,7 @@
         <aspectj.version>1.8.10</aspectj.version>
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
         <aspectj-maven-plugin.version>1.10</aspectj-maven-plugin.version>
-        <hibernate.version>5.3.7.Final</hibernate.version>
+        <hibernate.version>5.3.20.Final</hibernate.version>
         <jackson.version>2.10.1</jackson.version>
         <scm.http.url>https://github.com/cdaller/security_taint_propagation.git</scm.http.url>
         <surefire.version>2.19.1</surefire.version>
